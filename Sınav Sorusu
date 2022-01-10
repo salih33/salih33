@@ -1,0 +1,312 @@
+Sınav Sorusu
+Aşağıdaki istenilenler tek bir soru içindir. Verilenleri sırayla takip ederek uygulamayı tamamlayınız.
+
+Aşağıda Verilenlere Göre Ogrenci adında abstract bir sınıf tanımlayınız
+
+ad, soyad, ogrenciNo, dogumTarihi ve başlamaYili olmak üzere 5 tane private field bulunacak.
+herbir field için birer tane property oluşturarak aşağıdaki durumlara göre encapsulation yapılacak.
+Ad ve Soyad boş girilirse throw ile hata fırlatılmalı.
+OgrenciNo 5 basamaklı bir rakamdan oluşmuyorsa throw ile hata fırlatılmalı.
+DogumTarihi ve başlamaYili içinde bulunduğumuz yıl ile 1990 arasında değilse throw ile hata fırlatılmalı.
+Yas adında readonly property tanımlanarak dogumTarihinden yası hesaplattırılacak. (Sadece get metodu bulunacak)
+Tanımlanan 5 field için değer ataması kurucu metot içerisinde yapılacak.
+string tipinde enOnemliOlayi adından bir abstract metod tanımlayınız.
+Öğrencinin tüm bilgilerini ekrana yazdıran bilgileriEkranaYaz() adında virtual metot tanımlayınız.
+Aşağıda verilenlere göre IOgrenciIslem() adında bir interface tanımlayınız.
+
+string tipinde matematikDersIcerigi() adında bir metot gövdesi bulunacak
+int tipinde mezunOlacagiYasiHesapla() adında bir metot gövdesi tanımlayınız.
+Aşağıda verilenlere göre IlkOkulOgrencisi, OrtaOkulOgrencisi, LiseOgrencisi adında classları Ogrenci class'ından ve IOgrenciIslem interface'inden türetiniz.
+
+IlkOkulOgrencisi class'ı
+
+ad, soyad, ogrenciNo, dogumTarihi ve başlamaYili parametrelerinin bulunduğu kurucu metot tanımlanacak
+(Base kullanılarak temel(parent) sınıfın kurucusu çağrılacak)
+enOnemliOlayi() metodu "Yaz Kampları" adında bir String döndürecek
+matematikDersIcerigi() metodu "İlk Matematik" adında bir String döndürecek
+mezunOlacagiYasiHesapla() metodu öğrencinin yasına 4 yıl eklenerek hesaplanacak
+bilgileriEkranaYaz() metodu override edilerek tüm tüm bilgiler ekrana yazdırılacak.
+İçerisinde base.bilgileriEkranaYaz() ile temel classın metodu da çağrılacak
+toString() metodu override edilerek ad Soyad bilgileri birleştirilerek döndürülecek
+ortaokuldanMezunOlmaYiliniEkranaYaz() metodu başlamaYili'na 8 ekleyerek hesaplama yapıp sonucu ekrana yazacak
+OrtaOkulOgrencisi class'ı
+
+ad, soyad, ogrenciNo, dogumTarihi ve başlamaYili parametrelerinin bulunduğu kurucu metot tanımlanacak
+(Base kullanılarak temel(parent) sınıfın kurucusu çağrılacak)
+enOnemliOlayi() metodu "LGS Sınavı" adında bir String döndürecek
+matematikDersIcerigi() metodu "Temel Matematik" adında bir String döndürecek
+mezunOlacagiYasiHesapla() metodu öğrencinin yasına 4 yıl eklenerek hesaplanacak
+bilgileriEkranaYaz() metodu override edilerek tüm tüm bilgiler ekrana yazdırılacak. -İçerisinde base.bilgileriEkranaYaz() ile temel classın metodu da çağrılacak
+toString() metodu override edilerek ad, Soyad ve ogrenciNo bilgileri birleştirilerek döndürülecek
+gidebileceğiOkullariEkranaYaz() metodu ekrana "Gidebileceği Okullar: MTAL, Anadolu Lisesi, Fen Lisesi" metinin yazacak
+İçerisinde ilkokul ve ortaokul öğrencilerinin bulunabileceği bir liste tanımlayın. Bu Listeye 3 Adet İlkokul öğrencisi ve 3 adet ortaokulÖğrencisi ekleyin. Eklenecek Öğrenciler
+
+OrtaOkulOgrencisi("Zehra", "ACI", 354, 2009, 2019);
+IlkOkulOgrencisi("Esra", "ZEYBEK", 985, 2014, 2000);
+OrtaOkulOgrencisi("Ali", "AKIN", 654, 2010, 2020);
+IlkOkulOgrencisi("Ahmet", "EKER", 387, 2015, 2000);
+OrtaOkulOgrencisi("Ahmet", "ÇELİK", 658, 2011, 2022);
+IlkOkulOgrencisi("Arda", "AYDIN", 498, 2013, 2008);
+foreach döngüsü ile listedeki her bir öğrencinin bilgileriEkranaYaz() metodunu çağırarak bilgilerini ekrana yazdırınız.
+
+Ayrıca;
+Eğer Öğrenci İlkokul öğrencisi ise ortaokuldanMezunOlmaYiliniEkranaYaz() metodunu da çağırın.
+Eğer Öğrenci Ortaokul öğrencisi ise gidebileceğiOkullariEkranaYaz() metodunu da çağırın.
+Listeden Ad:Ahmet soyadı:EKER olan öğrenciyi sildiriniz. Ardından listeyi tekrar ekrana yazdırınız.
+--------------------------------Kod Aşagıda------------------------------------------------------
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Ogrenci> kötügeçdi = new List<Ogrenci>();
+            kötügeçdi.Add(new İlkokul("Esra", "ZEYBEK", 98585, 2014, 2000));
+            kötügeçdi.Add(new İlkokul("Ahmet", "EKER", 38763, 2015, 2000));
+            kötügeçdi.Add(new İlkokul("Arda", "AYDIN", 49821, 2013, 2008));
+            kötügeçdi.Add(new ortaokul("Zehra", "ACI", 35474, 2009, 2019));
+            kötügeçdi.Add(new ortaokul("Ali", "AKIN", 65452, 2010, 2020));
+            kötügeçdi.Add(new ortaokul("Ahmet", "ÇELİK", 65836, 2011, 2022));
+            foreach (var ogrenci in kötügeçdi)
+            { Console.WriteLine(ogrenci);
+                ogrenci.BilgileriEkranaYaz();
+               
+                Console.WriteLine("------------------------------");
+            }
+            kötügeçdi.Remove(kötügeçdi[1]);
+            
+            foreach (var ögrenci in kötügeçdi)
+            {
+                Console.WriteLine("Ögrenci silindikten sorna");
+                Console.WriteLine(ögrenci);
+            }
+
+            try
+            {
+                Ogrenci ogr1 = new İlkokul("Ali", "Ahmet",80780 ,2005,2000);
+                Console.WriteLine(ogr1);
+                ogr1.BilgileriEkranaYaz();
+                Ogrenci ogr2 = new ortaokul("Mustafa", "velı", 40030,2005,2001);
+                Console.WriteLine(ogr2);
+                ogr2.BilgileriEkranaYaz();
+            }
+            catch (Exception hata)
+            {
+
+                Console.WriteLine($"[Hata!!!]{hata.Message}"); ;
+            }
+        }
+    }
+    abstract class Ogrenci
+    {
+        private string ad;
+        private string soyad;
+        private int ogrenciNo;
+        private int dogumTarihi;
+        private int baslamaYili;
+        public string Ad
+        {
+            get
+            {
+                return ad;
+            }
+            set
+            {
+                if (value.Trim().Length == 0)
+                {
+                    throw new Exception("ad boş girilemez");
+                }
+                else
+                {
+                    ad = value;
+                }
+            }
+        }
+        public string Soyad
+        {
+            get
+            {
+                return soyad;
+            }
+            set
+            {
+                if (value.Trim().Length == 0)
+                {
+                    throw new Exception("soyad boş girilemez");
+                }
+                else
+                {
+                    soyad = value;
+                }
+            }
+        }
+        public int OgrenciNo
+        {
+            get
+            {
+                return ogrenciNo;
+            }
+            set
+            {
+                if (value >= 10000 && value <= 99999)
+                {
+                     ogrenciNo = value;
+                }
+                else
+                {
+                   throw new Exception("Ogrenci no 5 basamaklı olmalıdır");
+                }
+            }
+
+        }
+        public int DogumTarihi
+        {
+            get
+            {
+                return dogumTarihi;
+            }
+            set
+            {
+                if (value >= 1990 && value <= DateTime.Now.Year)
+                {
+                    dogumTarihi = value;
+                }
+                else
+                {
+  throw new Exception("Dogum tarihi 1990 la günümüz tarihi arasında olmalıdır");
+                }
+            }
+        }
+        public int BaslamaYili
+        {
+            get
+            {
+                return baslamaYili;
+            }
+            set
+            {
+                if (value >= 1990 && value <= DateTime.Now.Year)
+                {
+                      baslamaYili = value;
+                }
+                else
+                {throw new Exception("başlam yılı 1990 la günümüz tarihi arasında olmalıdır");
+                  
+                }
+            }
+        }
+        public int Yas
+        {
+            get
+            {
+                return   DateTime.Now.Year-DogumTarihi;
+            }
+
+        }
+        public Ogrenci(string adp, string soyadP, int ogrenciNop, int dogumTarihip, int baslamaYilip)
+        {
+            this.Ad = adp;
+            this.Soyad = soyadP;
+            this.OgrenciNo = ogrenciNop;
+            this.DogumTarihi = dogumTarihip;
+            this.BaslamaYili = baslamaYilip;
+        }
+        public abstract string enOnemlıOlayı();
+        public virtual void BilgileriEkranaYaz()
+        {
+            Console.WriteLine($"Ad Soyad :{this.Ad} {this.soyad}");
+            Console.WriteLine($" Ögrenci NO :{this.ogrenciNo} Dogum Tarihi :{this.dogumTarihi} BAşlama Yılı :{this.baslamaYili} Yaş :{this.Yas}");
+        }
+    }
+    interface Iogrenciıslem
+    {
+        string MatematikDersİcerigi();
+        int MezunolacagıyasHesapla();
+
+    }
+
+    class İlkokul : Ogrenci, Iogrenciıslem
+    {
+        public İlkokul(string adp, string soyadP, int ogrenciNop, int dogumTarihip, int baslamaYilip) : base(adp, soyadP, ogrenciNop, dogumTarihip, baslamaYilip)
+        {
+            Console.WriteLine("");
+        }
+
+        public override string enOnemlıOlayı()
+        {
+            return "Yaz kampları";
+        }
+
+        public string MatematikDersİcerigi()
+        {
+            return "İlk matematik";
+        }
+
+        public int MezunolacagıyasHesapla()
+        {
+            return BaslamaYili + 4;
+        }
+        public int OrtaokuldanMezunolacagıyasHesapla()
+        {
+            return BaslamaYili + 8;
+        }
+        public override string ToString()
+        {
+            return $" ilk okul ögrencisi {Ad} {Soyad}";
+        }
+        public override void BilgileriEkranaYaz()
+        {
+            base.BilgileriEkranaYaz();
+            Console.WriteLine($"En önemlki olayı :{enOnemlıOlayı()}");
+            Console.WriteLine($"Matematik ders İÇerigi :{MatematikDersİcerigi()}");
+            Console.WriteLine($"Mezun olacagı Yaş :{MezunolacagıyasHesapla()}");
+            Console.WriteLine($"Ortaokuldan mezun Olma Yaşı :{OrtaokuldanMezunolacagıyasHesapla()}");
+
+        }
+    }
+        class ortaokul : Ogrenci, Iogrenciıslem
+        {
+        public ortaokul(string adP, string soyadP, int ogrenciNoP, int dogumTarihiP, int baslamaYiliP) : base(adP, soyadP, ogrenciNoP, dogumTarihiP, baslamaYiliP)
+        {
+            Console.WriteLine("");
+        }
+
+            public override string enOnemlıOlayı()
+            {
+                return "Lgs";
+            }
+
+            public string MatematikDersİcerigi()
+            {
+                return "Temel matematik";
+            }
+
+            public int MezunolacagıyasHesapla()
+            {
+                return BaslamaYili + 4;
+
+            }
+            public string GidecegiOkullar()
+            {
+                return "Mtal,FEn lisesi , Anadolu lisesi ";
+            }
+            public override string ToString()
+            {
+                return $" orta okul ögrencisi {Ad} {Soyad}";
+            }
+            public override void BilgileriEkranaYaz()
+            {
+                base.BilgileriEkranaYaz();
+                Console.WriteLine($"En önemli olayı :{enOnemlıOlayı()}");
+                Console.WriteLine($"Matematik ders İÇerigi :{MatematikDersİcerigi()}");
+                Console.WriteLine($"Mezun olacagı Yaş :{MezunolacagıyasHesapla()}");
+                Console.WriteLine($"gidebilecegi okullar :{GidecegiOkullar()}");
+
+            
+        }
+        }
+
+    }
